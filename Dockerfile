@@ -3,12 +3,11 @@
 #   And of course to Chema (https://github.com/jmsv23/docker-drupal)
 # ====================================================================================
 
-# This container is intended to be used like base common place for the different frameworks 
-# and services developed in PHP like: Drupal, Magento, Symfony, etc.
+# This container is intended to be used like base common place for the Laravel PHP framework 
+# currently only tested with 5.8 version.
 
 # This Dockerfile was updated 5/05/2020 for reuse the Docker build images more efficiently
 # so, please don't be use directly. For more details see the comments at the end of this file. 
-
 
 # Use an official PHP runtime as a parent image
 FROM php:7.3.13-fpm
@@ -38,11 +37,8 @@ RUN docker-php-ext-install intl
 RUN docker-php-ext-install soap
 RUN docker-php-ext-install xsl
 RUN docker-php-ext-install zip
-#RUN docker-php-ext-install mcrypt
 RUN docker-php-ext-install opcache
 RUN docker-php-ext-install sockets
-
-#RUN pecl install mcrypt-1.0.1
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -53,14 +49,13 @@ RUN rm /etc/localtime
 RUN ln -s /usr/share/zoneinfo/America/Mexico_City /etc/localtime
 RUN "date"
 
-# This is a parent image and the usage of this extension depends of PHP Framework needed.
-# Example: Symfony or CodeIgniter 
-# RUN docker-php-ext-install pdo_mysql -> Uncomment this line for Symfony 3 and 4; tag: agomezguru/base7php:latest  
-# tag: agomezguru/phpCodeIgniter:latest
-# tag: agomezguru/base7php:CI-7.3.13-fpm
-RUN docker-php-ext-install mysqli
+# The usage of this extension depends of database driver connection needed.
+RUN docker-php-ext-install pdo_mysql
 
-# If you desire use thies Docker Image directly, uncomment the next line. 
+# tag: agomezguru/base7php:CI-7.3.13-fpm
+# Example: docker build . --tag agomezguru/laravel:5.8-php7.3.13
+
+# If you desire use this Docker Image directly, uncomment the next line. 
 # CMD php-fpm -F
 
 # End of file
