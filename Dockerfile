@@ -52,7 +52,7 @@ RUN "date"
 # The usage of this extension depends of database driver connection needed.
 RUN docker-php-ext-install pdo_mysql
 
-# tag: agomezguru/base7php:CI-7.3.13-fpm
+# tag: agomezguru/laravel:5.8-php7.3.13
 # Example: docker build . --tag agomezguru/laravel:5.8-php7.3.13
 
 # If you desire use this Docker Image directly, uncomment the next line. 
