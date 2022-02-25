@@ -1,6 +1,6 @@
 # Quick reference, laravel
 
-Configured PHP 7.3 server for deploy Laravel 5.x based projects
+Configured PHP 7.4 server for deploy Laravel 8.x based projects
 
 - **Maintained by**:
 [agomezguru](https://github.com/agomezguru)
@@ -10,7 +10,7 @@ Configured PHP 7.3 server for deploy Laravel 5.x based projects
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`5.8-php7.3.13`, `latest`](https://github.com/agomezguru/nginx)
+- [`8.x-php7.4.x`, `latest`](https://github.com/agomezguru/laravel)
 
 ## How to use this image
 
@@ -44,7 +44,7 @@ services:
       - $env-network
 
   php:
-    image: agomezguru/laravel:5.8-php7.3.13
+    image: agomezguru/laravel:8.x-php7.4.x
     volumes:
       - ../someCode:/srv
       - my-public:/srv/public
@@ -53,7 +53,7 @@ services:
       - $env-network
 
   db:
-    image: percona:5.6
+    image: percona:5.7.35
     volumes:
       - my-db-data:/var/lib/mysql
       - ../percona/masterdb/config:/etc/mysql/conf.d

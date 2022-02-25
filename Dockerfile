@@ -41,3 +41,24 @@ RUN docker-php-ext-install xsl
 RUN docker-php-ext-install zip
 RUN docker-php-ext-install opcache
 RUN docker-php-ext-install sockets
+
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | \
+  php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer --version
+
+# Set your timezone here...
+RUN rm /etc/localtime
+RUN ln -s /usr/share/zoneinfo/America/Mexico_City /etc/localtime
+RUN "date"
+
+# The usage of this extension depends of database driver connection needed.
+RUN docker-php-ext-install pdo_mysql
+
+# tag: agomezguru/laravel:8.x-php7.4.x
+# Example: docker build . --tag agomezguru/laravel:8.x-php7.4.x
+
+# If you desire use this Docker Image directly, uncomment the next line. 
+# CMD php-fpm -F
+
+# End of file
