@@ -28,7 +28,7 @@ volumes:
 
 services:
   web:
-    image: agomezguru/nginx:laravel-5x
+    image: agomezguru/nginx:laravel-8x
     ports:
       - "$outsidePort:80"
     environment:
