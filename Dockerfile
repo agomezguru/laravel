@@ -8,7 +8,7 @@
 
 # This Dockerfile was created 5/05/2020 for reuse the Docker build images more efficiently
 # so, please don't be use directly. For more details see the comments at the end of this file. 
-# Last updated: 25/02/2022 14:19 
+# Last updated: 12/03/2022 14:19 
 
 # Use an official PHP runtime as a parent image
 FROM php:7.4.28-fpm
@@ -54,6 +54,8 @@ RUN "date"
 
 # The usage of this extension depends of database driver connection needed.
 RUN docker-php-ext-install pdo_mysql
+
+WORKDIR /srv
 
 # tag: agomezguru/laravel:8.x-php7.4.x
 # Example: docker build . --tag agomezguru/laravel:8.x-php7.4.x
