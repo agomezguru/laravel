@@ -34,6 +34,8 @@ RUN apt install -y libzip-dev
 RUN apt install -y libwebp-dev
 RUN apt install -y libwebp6
 RUN apt install -y webp
+RUN apt install -y ghostscript
+# RUN apt install -y imagemagick
 RUN apt install -y libmagickwand-dev --no-install-recommends \
   && rm -rf /var/lib/apt/lists/*
 
@@ -62,6 +64,10 @@ RUN "date"
 # The usage of this extension depends of database driver connection needed.
 # Database driver connection to percona.
 RUN docker-php-ext-install pdo_mysql
+
+# Set rigths for read/write PDF files inside container. 
+RUN rm /etc/ImageMagick-6/policy.xml
+COPY policy.xml /etc/ImageMagick-6/policy.xml
 
 WORKDIR /srv
 
