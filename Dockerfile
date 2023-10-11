@@ -8,13 +8,13 @@
 
 # This Dockerfile was created 5/05/2020 for reuse the Docker build images more efficiently
 # so, please don't be use directly. For more details see the comments at the end of this file. 
-# Last updated: 24/06/2022 15:02 
+# Last updated: 22/02/2023 15:15 
 
 # Use an official PHP runtime as a parent image
 #Ref.: https://laravel.com/docs/8.x/deployment#server-requirements
-FROM php:7.4.30-fpm
+FROM php:8.1-fpm
 
-LABEL maintainer "Alejandro G. Lagunas <alagunas@coati.com.mx>"
+LABEL maintainer "agomezguru <agomezguru@coati.com.mx>"
 
 # Get the last available packages
 RUN apt update
@@ -71,8 +71,8 @@ COPY policy.xml /etc/ImageMagick-6/policy.xml
 
 WORKDIR /srv
 
-# tag: agomezguru/laravel:8.x-php7.4.x
-# Example: docker build . --tag agomezguru/laravel:8.x-php7.4.x
+# tag: agomezguru/laravel:8.x-php8.1.x
+# Example: docker build . --tag agomezguru/laravel:8.x-php8.1.x
 
 # If you desire use this Docker Image directly, uncomment the next line. 
 # CMD php-fpm -F
