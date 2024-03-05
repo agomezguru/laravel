@@ -1,6 +1,6 @@
 # Quick reference, laravel
 
-Configured PHP 7.4 server for deploy Laravel 8.x based projects
+Configured PHP 8.1.24 server for deploy Laravel 8.x based projects
 
 - **Maintained by**:
 [agomezguru](https://github.com/agomezguru)
@@ -10,7 +10,7 @@ Configured PHP 7.4 server for deploy Laravel 8.x based projects
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`8.x-php7.4.x`, `latest`](https://github.com/agomezguru/laravel)
+- [`8.x-php8.1.24`, `latest`](https://github.com/agomezguru/laravel)
 
 ## How to use this image
 
@@ -28,7 +28,7 @@ volumes:
 
 services:
   web:
-    image: agomezguru/nginx:laravel-8x
+    image: agomezguru/nginx:laravel-v3-8x
     ports:
       - "$outsidePort:80"
     environment:
@@ -44,7 +44,7 @@ services:
       - $env-network
 
   php:
-    image: agomezguru/laravel:8.x-php7.4.x
+    image: agomezguru/laravel:8.x-php8.1.24
     volumes:
       - ../someCode:/srv
       - my-public:/srv/public
@@ -53,7 +53,7 @@ services:
       - $env-network
 
   db:
-    image: percona:5.7.35
+    image: percona:8.0
     volumes:
       - my-db-data:/var/lib/mysql
       - ../percona/masterdb/config:/etc/mysql/conf.d
