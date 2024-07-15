@@ -1,6 +1,6 @@
 # Quick reference, laravel
 
-Configured PHP 8.1.24 server for deploy Laravel 8.x based projects
+Configured PHP 8.2.21 server for deploy Laravel 11.x based projects
 
 - **Maintained by**:
 [agomezguru](https://github.com/agomezguru)
@@ -10,7 +10,7 @@ Configured PHP 8.1.24 server for deploy Laravel 8.x based projects
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`8.x-php8.1.24`, `latest`](https://github.com/agomezguru/laravel)
+- [`11.x-php8.2.21`, `latest`](https://github.com/agomezguru/laravel)
 
 ## How to use this image
 
@@ -18,8 +18,6 @@ The intent of this image is always being together use with a NGINX docker contai
 
 ```bash
 cat <<EOF > docker-compose.yml
-version: '3'
-
 volumes:
   my-public:
     external: true
@@ -44,7 +42,7 @@ services:
       - $env-network
 
   php:
-    image: agomezguru/laravel:8.x-php8.1.24
+    image: agomezguru/laravel:11.x-php8.2.21
     volumes:
       - ../someCode:/srv
       - my-public:/srv/public
